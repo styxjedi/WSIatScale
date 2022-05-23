@@ -72,8 +72,10 @@ class WikiProcessor(DataProcessor):
     def _create_examples(self, lines):
         examples = []
         for line in lines:
-            text = line['metadata']['paragraph_']
-            guid, _ = line['id'].split(':')
+#             text = line['metadata']['paragraph_']
+#             guid, _ = line['id'].split(':')
+            text = line['text']
+            guid = line['revid']
             examples.append(InputExample(guid=guid, text_a=text))
         return examples
 
