@@ -105,7 +105,14 @@ def sort_community_tokens_by_popularity(rep_instances, community_tokens):
 
 def read_clustering_data(data_dir, token):
     cluster_file = os.path.join(data_dir, WORD_CLUSTERS_DIR, f"{token}_clustering.json")
-    return json.load(open(cluster_file, 'r'))
+#    print(cluster_file)
+#    return json.load(open(cluster_file, 'r'))
+    cluster_content = open(cluster_file, 'r').read()
+    if cluster_content.strip():
+        cluster_dict = json.loads(cluster_content)
+    else:
+        cluster_dict = {} #给空字典
+    return cluster_dict
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
